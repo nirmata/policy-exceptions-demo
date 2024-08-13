@@ -1,0 +1,23 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2024-08-20T102033Z
+  name: policy-exc-req-c4065v9412r-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: restrict-escalation-verbs-roles
+    ruleNames:
+    - escalate
+    - autogen-escalate
+  match:
+    any:
+    - resources:
+        kinds:
+        - Role
+        names:
+        - kyverno-operator
+        - kyverno-operator-installer
+        namespaces:
+        - nirmata-system
