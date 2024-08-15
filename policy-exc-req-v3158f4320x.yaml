@@ -1,0 +1,93 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2024-08-22T194759Z
+  name: policy-exc-req-v3158f4320x-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: restrict-automount-sa-token
+    ruleNames:
+    - validate-automountServiceAccountToken
+    - autogen-validate-automountServiceAccountToken
+  match:
+    any:
+    - resources:
+        kinds:
+        - Job
+        names:
+        - kyverno-cleanup-cluster-admission-reports-28725020
+        - kyverno-cleanup-cluster-admission-reports-28725450
+        - kyverno-cleanup-admission-reports-28725480
+        - kyverno-cleanup-cluster-admission-reports-28728750
+        - kyverno-cleanup-admission-reports-28724630
+        - kyverno-cleanup-admission-reports-28725020
+        - kyverno-cleanup-cluster-admission-reports-28725480
+        - kyverno-cleanup-admission-reports-28728540
+        - kyverno-cleanup-cluster-admission-reports-28728540
+        - kyverno-cleanup-admission-reports-28728610
+        - kyverno-cleanup-cluster-admission-reports-28728610
+        - kyverno-cleanup-cluster-admission-reports-28724630
+        - kyverno-cleanup-admission-reports-28724920
+        - kyverno-cleanup-admission-reports-28725450
+        - kyverno-cleanup-cluster-admission-reports-28724920
+        - kyverno-cleanup-admission-reports-28728640
+        - kyverno-cleanup-cluster-admission-reports-28728640
+        - kyverno-cleanup-admission-reports-28729180
+        - kyverno-cleanup-cluster-admission-reports-28729180
+        - kyverno-cleanup-admission-reports-28728750
+        namespaces:
+        - kyverno
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - kyverno-cleanup-controller
+        - kyverno-background-controller
+        - kyverno-admission-controller
+        - kyverno-reports-controller
+        namespaces:
+        - kyverno
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - kyverno-reports-controller-7f4cd44cff
+        - kyverno-admission-controller-7b8cf44686
+        - kyverno-cleanup-controller-65d6c76cd4
+        - kyverno-background-controller-7b747b5bfc
+        namespaces:
+        - kyverno
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - kyverno-cleanup-cluster-admission-reports-28728750-8x9hr
+        - kyverno-cleanup-admission-reports-28728540-z66bv
+        - kyverno-cleanup-cluster-admission-reports-28729180-rmkmg
+        - kyverno-cleanup-admission-reports-28729180-g4g5r
+        - kyverno-admission-controller-7b8cf44686-m7vv8
+        - kyverno-admission-controller-7b8cf44686-vk7sz
+        - kyverno-background-controller-7b747b5bfc-gtfk6
+        - kyverno-cleanup-admission-reports-28725450-9g552
+        - kyverno-cleanup-cluster-admission-reports-28725480-l7zs8
+        - kyverno-cleanup-cluster-admission-reports-28724630-snfzl
+        - kyverno-cleanup-admission-reports-28724920-lcwkj
+        - kyverno-cleanup-cluster-admission-reports-28728540-sbv9j
+        - kyverno-cleanup-cluster-admission-reports-28725020-q5rfx
+        - kyverno-cleanup-admission-reports-28728610-cq7pz
+        - kyverno-cleanup-cluster-admission-reports-28725450-cnt8p
+        - kyverno-cleanup-admission-reports-28728640-fdmdc
+        - kyverno-reports-controller-7f4cd44cff-gpc9r
+        - kyverno-cleanup-admission-reports-28725480-z4b58
+        - kyverno-cleanup-cluster-admission-reports-28724920-l7phh
+        - kyverno-admission-controller-7b8cf44686-vzsc7
+        - kyverno-cleanup-controller-65d6c76cd4-9dgtp
+        - kyverno-cleanup-admission-reports-28728750-hjml2
+        - kyverno-cleanup-admission-reports-28724630-mp8qk
+        - kyverno-cleanup-admission-reports-28725020-8cwz7
+        - kyverno-cleanup-cluster-admission-reports-28728610-lh49r
+        - kyverno-cleanup-cluster-admission-reports-28728640-x2ch8
+        namespaces:
+        - kyverno
