@@ -1,0 +1,63 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2024-09-23T044944Z
+  name: policy-exc-req-p1492u5765c-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: disallow-capabilities
+    ruleNames:
+    - adding-capabilities
+    - autogen-adding-capabilities
+  - policyName: disallow-privileged-containers
+    ruleNames:
+    - privileged-containers
+    - autogen-privileged-containers
+  - policyName: disallow-host-namespaces
+    ruleNames:
+    - host-namespaces
+    - autogen-host-namespaces
+  - policyName: disallow-host-path
+    ruleNames:
+    - host-path
+    - autogen-host-path
+  match:
+    any:
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - kube-proxy-z5j5z
+        - kube-controller-manager-ndp-prod-control-plane
+        - etcd-ndp-prod-control-plane
+        - kube-apiserver-ndp-prod-control-plane
+        - kube-scheduler-ndp-prod-control-plane
+        - coredns-5d78c9869d-px6fq
+        - kindnet-47j5h
+        - coredns-5d78c9869d-75bs4
+        namespaces:
+        - kube-system
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - coredns-5d78c9869d
+        namespaces:
+        - kube-system
+    - resources:
+        kinds:
+        - DaemonSet
+        names:
+        - kindnet
+        - kube-proxy
+        namespaces:
+        - kube-system
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - coredns
+        namespaces:
+        - kube-system
