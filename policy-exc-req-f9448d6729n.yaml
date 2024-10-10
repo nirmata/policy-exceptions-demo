@@ -1,0 +1,36 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2024-10-17T113320Z
+  name: policy-exc-req-f9448d6729n-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: restrict-automount-sa-token
+    ruleNames:
+    - validate-automountServiceAccountToken
+    - autogen-validate-automountServiceAccountToken
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - httpd
+        namespaces:
+        - test-httpd
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - httpd-5c98f79dfc-94rch
+        namespaces:
+        - test-httpd
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - httpd-5c98f79dfc
+        namespaces:
+        - test-httpd
