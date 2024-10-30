@@ -1,0 +1,39 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2024-11-06T064050Z
+  name: policy-exc-req-s6590i2947k-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: restrict-automount-sa-token
+    ruleNames:
+    - validate-automountServiceAccountToken
+    - autogen-validate-automountServiceAccountToken
+  match:
+    any:
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - nirmata-kube-controller-7668fc4cb9-g6kz7
+        - otel-agent-5dcdf5fd8b-xbnnx
+        namespaces:
+        - nirmata
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - otel-agent
+        - nirmata-kube-controller
+        namespaces:
+        - nirmata
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - otel-agent-5dcdf5fd8b
+        - nirmata-kube-controller-7668fc4cb9
+        namespaces:
+        - nirmata
