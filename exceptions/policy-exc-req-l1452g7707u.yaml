@@ -1,0 +1,48 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2025-12-12T135800Z
+  name: policy-exc-req-l1452g7707u-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: restrict-seccomp-strict
+    ruleNames:
+    - check-seccomp-strict
+    - autogen-check-seccomp-strict
+  match:
+    any:
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - service-bravo-*
+        - backend-charlie-*
+        - frontend-delta-*
+        - api-echo-*
+        - app-alpha-*
+        namespaces:
+        - demo
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - service-bravo-*
+        - app-alpha-*
+        - backend-charlie-*
+        - frontend-delta-*
+        - api-echo-*
+        namespaces:
+        - demo
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - backend-charlie
+        - app-alpha
+        - api-echo
+        - frontend-delta
+        - service-bravo
+        namespaces:
+        - demo
