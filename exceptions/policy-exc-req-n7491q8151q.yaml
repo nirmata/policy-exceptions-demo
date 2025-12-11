@@ -1,0 +1,29 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2025-12-18T175231Z
+  name: policy-exc-req-n7491q8151q-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: disallow-capabilities-strict
+    ruleNames:
+    - require-drop-all
+    - autogen-require-drop-all
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - nginx
+        namespaces:
+        - nginx
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - nginx-*
+        namespaces:
+        - nginx
