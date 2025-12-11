@@ -1,0 +1,29 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2025-12-18T212306Z
+  name: policy-exc-req-s1740e7218y-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: disallow-privilege-escalation
+    ruleNames:
+    - privilege-escalation
+    - autogen-privilege-escalation
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - nginx
+        namespaces:
+        - nginx
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - nginx-*
+        namespaces:
+        - nginx
