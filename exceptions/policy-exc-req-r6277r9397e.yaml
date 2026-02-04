@@ -1,0 +1,39 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2026-01-21T173351Z
+  name: policy-exc-req-r6277r9397e-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: disallow-privilege-escalation
+    ruleNames:
+    - privilege-escalation
+    - autogen-privilege-escalation
+  - policyName: require-run-as-nonroot
+    ruleNames:
+    - run-as-non-root
+    - autogen-run-as-non-root
+  - policyName: restrict-volume-types
+    ruleNames:
+    - restricted-volumes
+    - autogen-restricted-volumes
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - backend-charlie
+        - app-alpha
+        namespaces:
+        - demo-app
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - app-alpha-*
+        - backend-charlie-*
+        namespaces:
+        - demo-app
