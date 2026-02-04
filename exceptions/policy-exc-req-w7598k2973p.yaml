@@ -1,0 +1,31 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2026-02-11T152432Z
+  name: policy-exc-req-w7598k2973p-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: check-image-keyless
+    ruleNames:
+    - check-image-keyless
+    - autogen-check-image-keyless
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - backend-charlie
+        - app-alpha
+        namespaces:
+        - demo-app
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - backend-charlie-*
+        - app-alpha-*
+        namespaces:
+        - demo-app
