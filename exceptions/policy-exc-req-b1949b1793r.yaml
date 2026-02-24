@@ -1,0 +1,11 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 168h
+  name: policy-exc-req-b1949b1793r-0
+  namespace: kyverno
+spec:
+  exceptions: []
+  match:
+    any: []
